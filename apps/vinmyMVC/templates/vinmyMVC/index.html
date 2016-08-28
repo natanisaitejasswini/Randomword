@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html lang ="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Random Word</title>
+	 {% load staticfiles %}
+	<link rel="stylesheet" href="{% static 'vinmyMVC/css/randomword.css' %}" media="screen" title="no title"  charset="utf-8">
+</head>
+<body>
+	<h3>Random Word (attempt #{{request.session.count}})</h3>
+	{% csrf_token %}
+	<div> {{random_word}}</div>
+	<form action = '/new_user' method = 'post'>
+	{% csrf_token %}
+		<input type = "submit" value = 'Generate'>
+	</form>
+	<form action = '/reset' method = 'post'>
+		{% csrf_token %}
+		<input type = "submit" value = 'Reset'>
+	</form>
+</body>
+</html>
